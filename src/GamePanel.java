@@ -121,7 +121,13 @@ public class GamePanel extends JPanel implements ActionListener {
             timer.stop();
         }
     }
-    public void gameOver(Graphics g){}
+    public void gameOver(Graphics g){
+        //game Over Text
+        g.setColor(Color.RED);
+        g.setFont(new Font("Ink Free",Font.BOLD, 75));
+        FontMetrics metrics = getFontMetrics(g.getFont());
+        g.drawString("GAME OVER", (SCREEN_WIDTH - metrics.stringWidth("GAME OVER"))/2, SCREEN_HEIGHT/2);
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         if(running){
