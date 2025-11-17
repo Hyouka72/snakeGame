@@ -19,7 +19,7 @@ public class GamePanel extends JPanel implements ActionListener {
     int applesEaten = 0;
     int appleX;
     int appleY;
-    char direction = 'R';
+    char direction = 'D';
     boolean running = false;
     Timer timer;
     Random random;
@@ -93,6 +93,23 @@ public class GamePanel extends JPanel implements ActionListener {
     }
     public void checkCollision(){
 
+        //checks if head collides with body
+        for(int i = bodyparts; i > 0; i--) {
+            if((x[0] == x[i]) && (y[0] == y[i])){
+                running = false;
+            }
+        }
+        //check if head touches left border and up border
+        if((x[0] < 0) || (y[0] < 0)){
+            running = false;
+        }
+        //check if head touches right border and down border
+        if(x[0] > SCREEN_WIDTH || y[0] > SCREEN_HEIGHT){
+            running = false;
+        }
+        if(!running){
+            timer.stop();
+        }
     }
     public void gameOver(Graphics g){}
     @Override
